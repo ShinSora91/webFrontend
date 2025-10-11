@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const rr = (i) => i["b"];
+      //문 1) 위의 코드는 그대로 놔두고
+      //rr함수를 호출하고 "증오합니다" 출력
+
+      const obj = { b: "증오합니다" };
+      let result = rr(obj);
+      console.log("문1)", result);
+
+      //문 2)
+      const vv = (z, j) => {
+        //여기를 작성하고 j에는 배열이 들어온다, z에는 숫자 하나 들어온다
+        //숫자 하나의 j배열의 각각의 곱한 결과를 다 더한 결과를 반환
+        let mul = 0;
+        let sum = 0;
+        for (let i = 0; i < j.length; i++) {
+          mul = z * j[i];
+          sum += mul;
+        }
+        return sum;
+      };
+
+      let arr = [10, 20, 30, 40, 50];
+      let answer = vv(2, arr);
+      console.log("문2)", answer);
+
+      //문 3)
+      let zz = [1, 2, 3, 4, 5];
+      //위에서 만든 함수에 zz에서 하나씩 꺼내어 vv함수 호출시 첫번째 인자로 전달
+      //반복문으로 사용
+
+      let arr2 = [];
+      for (let j = 0; j < arr.length; j++) {
+        // let test = vv(zz[j], arr);
+        // console.log(test);
+        arr2.push(vv(zz[j], arr));
+      }
+      console.log("문3)", arr2);
+      // vv함수에서 zz를 arr과 곱하고 곱해서 나온 수를 더해서 누적
+      // zz는 arr길이만큼 순회
+      // i가 0일때 => zz가 1 => 1*10 + 1*20 + 1*30 + 1*40 + 1*50 = 150
+      // i가 1일때 => zz가 2 => 2*10 + 2*20 + 2*30 + 2*40 + 2*50 = 300
+      // i가 2일때 => zz가 3 => 3*10 + 3*20 + 3*30 + 3*40 + 3*50 = 450
+      // i가 3일때 => zz가 4 => 4*10 + 4*20 + 4*30 + 4*40 + 4*50 = 600
+      // i가 4일떄 => zz가 5 => 5*10 + 5*20 + 5*30 + 5*40 + 5*50 = 750
+      let flat = [...arr, ...zz];
+      let qt = [];
+      for (let i = 0; i < 10; i++) {
+        qt = [...flat, vv(i + 1, arr)];
+      }
+      console.log("qt)", qt);
+    </script>
+  </body>
+</html>

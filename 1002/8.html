@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let [z, z1] = [10, 20]; //배열의 디스트럭처링
+      // console.log(z, z1);
+      let [a, ...b] = [10, 20, 30]; //0번째 인덱스 10을 a라는 변수로 디스트럭처링
+      //...1번째 인덱스부터 마지막 인덱스까지 풀어온다
+      // console.log(b);
+
+      const a1 = (a, b) => a + b;
+      const a2 = (a, b) => a - b;
+      const a3 = (a, b) => a * b;
+      const a4 = (a, b) => a / b;
+      const a5 = (a, b) => a % b;
+      const firstOperand = [1, 2, 3, 4, 5];
+      const secondOperand = [10, 20, 30, 40, 50];
+      const funList = [a1, a2, a3, a4, a5];
+      //문 1) funList에서 하나씩 꺼내어 첫번째 인자로는 firstOperand 의 배열의
+      //하나씩 꺼낸 데이터와 두번째 인자로는 fsecondOperand의 배열에서 하나씩 꺼내어
+      //전달한 결과를 배열에 저장
+      //a1(1,10), a1(2,20), a1(3,30)....a2(1,10),a2(2,20)
+
+      let testArr = [];
+      for (let f of funList) {
+        // console.log("f : ", f);
+        for (let i = 0; i < funList.length; i++) {
+          let test = f(firstOperand[i], secondOperand[i]);
+          // console.log(test);
+          testArr.push(test);
+        }
+      }
+      console.log("testArr)", testArr);
+      //funList에서 함수를 하나씩 꺼내는데
+      //그 다음 반복문에서 funList에서 꺼낸 함수에 firstOperand,secondOperand를
+      //인자로 전달하고, 그 결과 =>
+      //i가 0일때 -> a1함수 호출하고 firstOperand는 1, secondOperand는 10을 전달 -> 결과 11
+      //firstOperand와 fsecondOperand는 funList길이만큼 순회하고 있기 때문에
+      //a1함수에는 firstOperand는 2, fsecondOperand는 20이 전달되고 결과는 22
+      //이런식으로 a1 함수에 전달할 인자가 더 없으면 funList에서 a2함수 꺼내고
+      //a2함수에 firstOperand, secondOperand를 전달하고 두 인자가 순회하며 전달한 값을
+      //계산한다.
+    </script>
+  </body>
+</html>

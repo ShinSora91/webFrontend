@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj1 = { a: 10, b: 20 };
+      let obj2 = { a: 11, b: 121 };
+      let obj3 = { a: 21, b: 221 };
+      let obj4 = { a: 31, b: 321 };
+      let list = [
+        { ...obj1, c: 200 },
+        { ...obj2, c: 3000 },
+        { ...obj3, c: 4000 },
+        { ...obj4, c: 5000 },
+      ];
+      // console.log("list:", list);
+      const f = (list, key) => {
+        console.log(list);
+        console.log(key);
+        let sum = 0;
+        for (let k of list) {
+          console.log("i에서 꺼내 k에 담은것)", k);
+          sum += k[key];
+        }
+        // console.log(arr);
+        return { [key]: sum };
+      };
+      let test = f(list, "a");
+      console.log(test);
+      // let u = f(list[0], "a");
+      // u += f(list[1], "a");
+      // u += f(list[2], "a");
+      // u += f(list[3], "a");
+
+      // let k = f(list[0], "b");
+      // k += f(list[1], "b");
+      // k += f(list[2], "b");
+      // k += f(list[3], "b");
+      // console.log(u, k);
+    </script>
+  </body>
+</html>

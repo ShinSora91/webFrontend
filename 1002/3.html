@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var fnList = [
+      //     () => console.log("사랑1"),
+      //     () => console.log("사랑2"),
+      //     () => console.log("사랑3"),
+      //     () => console.log("사랑4"),
+      //     () => console.log("사랑5"),
+      //   ];
+      //   console.log("1)", fnList);
+      //문 1) 반복문으로 변경하고 함수 호출하여 결과 출력
+
+      var fnList = [];
+      for (var i = 0; i < 5; i++) {
+        fnList.push(() => console.log("사랑" + (i + 1)));
+      }
+      console.log(fnList);
+      for (var i = 0; i < fnList.length; i++) {
+        console.log(fnList[i]());
+      }
+    </script>
+  </body>
+</html>

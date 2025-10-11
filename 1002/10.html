@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj1 = { a: 10, b: 20 };
+      let obj2 = { a: 11, b: 121 };
+      let obj3 = { a: 21, b: 221 };
+      let obj4 = { a: 31, b: 321 };
+      let list = [
+        { ...obj1, c: 200 },
+        { ...obj2, c: 3000 },
+        { ...obj3, c: 4000 },
+        { ...obj4, c: 5000 },
+      ];
+      console.log("list:", list);
+      // {a:10+11, b:20+21 c:200+3000}
+
+      let aSum = 0;
+      let bSum = 0;
+      let cSum = 0;
+      for (let i of list) {
+        let { a, b, c } = i;
+        // aSum += i.a;
+        // bSum += i.b;
+        // cSum += i.c;
+        aSum += a;
+        bSum += b;
+        cSum += c;
+      }
+      let obj = { a: aSum, b: bSum, c: cSum };
+      console.log("obj", obj);
+
+      // let a_1 = list[0].a + list[1].a + list[2].a + list[3].a;
+      // let b_1 = list[0].b + list[1].b + list[2].b + list[3].b;
+      // let c_1 = list[0].c + list[1].c + list[2].c + list[3].c;
+      let a_1 = 0;
+      let b_1 = 0;
+      let c_1 = 0;
+      for (let i = 0; i < list.length; i++) {
+        a_1 += list[i].a;
+        b_1 += list[i].b;
+        c_1 += list[i].c;
+      }
+      console.log("a1,b1,c1", a_1, b_1, c_1);
+      let resultObj = {};
+      resultObj["a"] = a_1;
+      resultObj["b"] = b_1;
+      resultObj["c"] = c_1;
+      console.log(resultObj);
+    </script>
+  </body>
+</html>

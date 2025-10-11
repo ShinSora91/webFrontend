@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // const f = (i, j) => {
+      //   const { love } = i;
+      //   return j({ love });
+      // };
+
+      const love = "사랑";
+      const f = (i, j) => j({ love });
+
+      const kwon = (v) => {
+        const { love } = v;
+        console.log("love:", love);
+        return "사랑" + love;
+      };
+
+      let result = f({ love: "love" }, kwon);
+      console.log(result);
+    </script>
+  </body>
+</html>

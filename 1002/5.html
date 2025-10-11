@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const f = (i, j) => j(i);
+
+      // const a = (b) => "사랑" + b;
+      // let test = a(3);
+      // console.log(test);
+      let result = f(3, (b) => "사랑" + b);
+      console.log(result);
+      //f 함수 호출되어 반환되는 값이 문자열 "사랑3" 이 출력
+    </script>
+  </body>
+</html>

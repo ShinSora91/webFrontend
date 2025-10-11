@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // const ff = (p) => {
+      //   console.log(p);
+      //   let { page } = p;
+      //   console.log(page);
+      //   // let sum = 0;
+      //   // for (let i of page) {
+      //   //   sum += i;
+      //   // }
+      //   let answer = page.reduce((acc, crr) => acc + crr, 0);
+      //   return answer;
+      // };
+
+      const ff = (zz, pp) => {
+        const { page } = pp;
+        console.log("pgae:", page);
+        const { z } = zz;
+        console.log("z:", z);
+        const { q } = z;
+        console.log("q:", q);
+
+        // let zEvenSum = 0;
+        // let zOddSum = 0;
+        // for (let i of q) {
+        //   if (i % 2 == 0) zEvenSum += i;
+        //   else zOddSum += i;
+        // }
+        let zEvenSum = q
+          .filter((i) => i % 2 == 0)
+          .reduce((acc, crr) => acc + crr, 0);
+        let zOddSum = q
+          .filter((i) => i % 2 != 0)
+          .reduce((acc, crr) => acc + crr, 0);
+
+        // let pageEvenSum = 0;
+        // let pageOddSum = 0;
+        // for (let j of page) {
+        //   if (j % 2 == 0) pageEvenSum += j;
+        //   else pageOddSum += j;
+        // }
+        let pageEvenSum = page
+          .filter((i) => i % 2 == 0)
+          .reduce((acc, crr) => acc + crr, 0);
+        let pageOddSum = page
+          .filter((i) => i % 2 != 0)
+          .reduce((acc, crr) => acc + crr, 0);
+
+        return { 짝수: [zEvenSum, pageEvenSum], 홀수: [zOddSum, pageOddSum] };
+      };
+      let result = ff(
+        { z: { q: [2, 3, 4, 5, 6, 7] } },
+        { page: [10, 20, 30, 40, 51, 11] }
+      );
+      console.log(result);
+
+      //문 2) ff 함수 내부를 구현하여 100이 ff 함수 호출 결과로 출력되게
+      //ff( { page: [10, 20, 30, 40] } )
+      //문 3) 짝수의 합과 홀수의 합을 {'짝수':짝수의 값, '홀수':홀수의 값}
+      //ff( { z: { q: [2, 3, 4, 5, 6, 7] } }, { page: [10, 20, 30, 40] } );
+    </script>
+  </body>
+</html>

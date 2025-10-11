@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let [z, z1] = [10, 20]; //배열의 디스트럭처링
+      // console.log(z, z1);
+      let [a, ...b] = [10, 20, 30]; //0번째 인덱스 10을 a라는 변수로 디스트럭처링
+      //...1번째 인덱스부터 마지막 인덱스까지 풀어온다
+      // console.log(b);
+
+      const a1 = (a, b) => a + b;
+      const a2 = (a, b) => a - b;
+      const a3 = (a, b) => a * b;
+      const a4 = (a, b) => a / b;
+      const a5 = (a, b) => a % b;
+      const firstOperand = [1, 2, 3, 4, 5];
+      const secondOperand = [10, 20, 30, 40, 50];
+      const funList = [a1, a2, a3, a4, a5];
+      //문 1) funList에서 하나씩 꺼내어 첫번째 인자로는 firstOperand 의 배열의
+      //하나씩 꺼낸 데이터와 두번째 인자로는 fsecondOperand의 배열에서 하나씩 꺼내어
+      //전달한 결과를 배열에 저장
+      //a1(1,10), a1(2,20), a1(3,30)....a2(1,10),a2(2,20)
+      let mergeList = [];
+      for (let i = 0; i < funList.length; i++) {
+        mergeList.push([firstOperand[i], secondOperand[i]]);
+      }
+      //for of 구문으로
+
+      let answer = [];
+      for (let f of funList) {
+        for (let m of mergeList) {
+          console.log(m);
+          answer.push(f(m[0], m[1]));
+          // let [a, b] = m;
+          // answer.push(f(a, b));
+        }
+      }
+      console.log(answer);
+    </script>
+  </body>
+</html>
