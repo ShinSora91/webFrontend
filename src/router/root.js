@@ -1,7 +1,6 @@
 import { lazy, Suspense } from "react";
 import todoRouter from "./todoRouter";
 import productRouter from "./productRouter";
-import addressRouter from "./addressRouter";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -39,7 +38,7 @@ const root = createBrowserRouter([
     children: todoRouter(),
   },
   {
-    path: "/product",
+    path: "/products",
     element: (
       <Suspense fallback={<Loading />}>
         <ProductsIndex />
@@ -47,19 +46,6 @@ const root = createBrowserRouter([
     ),
     children: productRouter(),
   },
-  {
-    path: "/address",
-    element: (
-      <Suspense fallback={<Loading />}>
-        <AddressIndex />
-      </Suspense>
-    ),
-    children: addressRouter(),
-  },
-  // {
-  //   path: "/score",
-  //   children: scoreRouter(),
-  // },
 ]);
 
 export default root;

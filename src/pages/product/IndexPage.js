@@ -1,5 +1,4 @@
 import React, { useCallback } from "react";
-import ListComponent from "../../components/products/ListComponent";
 import { Outlet, useNavigate } from "react-router-dom";
 import BasicLayout from "../../layouts/BasicLayout";
 

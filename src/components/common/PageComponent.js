@@ -1,7 +1,6 @@
 import React from "react";
 
 const PageComponent = ({ serverData, movePage }) => {
-  console.log("movePage", movePage);
   return (
     <div className="m-6 flex justify-center">
       {serverData.prev ? (
@@ -15,7 +14,6 @@ const PageComponent = ({ serverData, movePage }) => {
         <></>
       )}
       {serverData.pageNumList.map((pageNum) => {
-        console.log(pageNum);
         return (
           <div
             key={pageNum}
