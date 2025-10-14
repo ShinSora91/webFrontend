@@ -31,7 +31,7 @@ const useCustomMove = () => {
       } else {
         queryStr = queryDefault;
       }
-      navigate({ pathname: `../list`, search: queryDefault });
+      navigate({ pathname: `../list`, search: queryStr });
     },
     [page, size]
   );
