@@ -4,7 +4,7 @@ import { getList } from "../../api/productApi";
 import useCustomMove from "../../hooks/useCustomMove";
 import PageComponent from "../common/PageComponent";
 import FetchingModal from "../common/FetchingModal";
-import { API_SERVER_HOST } from "../../api/productApi";
+import { API_SERVER_HOST } from "../../api/todoApi";
 const host = API_SERVER_HOST;
 const initState = {
   dtoList: [],

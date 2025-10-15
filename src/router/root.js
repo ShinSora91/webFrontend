@@ -9,7 +9,6 @@ const Main = lazy(() => import("../pages/MainPage"));
 const About = lazy(() => import("../pages/AboutPage"));
 const TodoIndex = lazy(() => import("../pages/todo/IndexPage"));
 const ProductsIndex = lazy(() => import("../pages/product/IndexPage"));
-const AddressIndex = lazy(() => import("../pages/address/IndexPage"));
 
 const root = createBrowserRouter([
   {
