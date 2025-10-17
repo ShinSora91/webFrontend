@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //정수만 짤라서 다 더한 결과를 출력
+      let arr = [];
+      let sum = 0;
+      for (let i = 0; i < 20; i++) {
+        arr.push("" + Math.random() * 100);
+      }
+      for (let i = 0; i < arr.length; i++) {
+        let arrSplit = arr[i].split(".");
+        // console.log("arrSplit", arrSplit);
+
+        let arrNumber = arrSplit;
+        console.log("arrNumber", arrNumber);
+
+        sum += Number(arrNumber[0]);
+        // let num = Number(arr[i]);
+        // console.log("num확인: ", num);
+        // let intNum = parseInt(num);
+        // console.log("num확인", intNum);
+        // sum += intNum;
+      }
+      console.log("결과 : ", sum);
+
+      const vv = arr
+        .map((num) => num.split("."))
+        .map((numSplit) => numSplit[0])
+        .map((numSplit0) => Number(numSplit0))
+        .reduce((i, j) => i + j);
+
+      console.log("map과 reduce : ", vv);
+    </script>
+  </body>
+</html>
