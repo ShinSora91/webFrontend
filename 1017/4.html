@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let alist = [];
+      let blist = [];
+      for (let i = 0; i < 20; i++) {
+        alist.push(Math.random() * 100);
+        blist.push("사랑" + Math.random() * 100 + ",합니다");
+      }
+      let u = {
+        a: alist,
+        b: blist,
+      };
+      //   {"a_0":alist의 0번숫자와 blist 문자열의 사랑 다음의 정수를 더한 결과}
+      //   {a_0 : alist[0]+Number(blist[0].split(",").split(".")[0])},
+      //   {a_0 : alist[0]+Number(blist[0].split(",").split(".")[0])},
+      console.log("alist => ", alist);
+      console.log("blist => ", blist);
+
+      for (let i = 0; i < alist.lengt; i++) {}
+    </script>
+  </body>
+</html>
