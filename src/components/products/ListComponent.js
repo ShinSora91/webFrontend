@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { getList } from "../../api/productApi";
-
 import useCustomMove from "../../hooks/useCustomMove";
 import PageComponent from "../common/PageComponent";
 import FetchingModal from "../common/FetchingModal";
 import { API_SERVER_HOST } from "../../api/todoApi";
+import useCustomLogin from "../../hooks/useCustomLogin";
+
 const host = API_SERVER_HOST;
 const initState = {
   dtoList: [],
@@ -19,22 +20,20 @@ const initState = {
   current: 0,
 };
 const ListComponent = () => {
+  const { exceptionHandle } = useCustomLogin();
+  const { page, size, refresh, moveToRead, moveToList } = useCustomMove();
   const [serverData, setServerData] = useState(initState);
-  const { page, size, moveToRead, refresh, moveToList } = useCustomMove();
-  const [fetching, setFetching] = useState(true);
+  const [fetching, setFetching] = useState(false);
 
   useEffect(() => {
-    const list = async () => {
-      const data = await getList({ page, size });
-
-      console.log(data);
-
-      setServerData(data);
-      setFetching(false);
-
-      console.log(data.dtoList);
-    };
-    list();
+    setFetching(true);
+    getList({ page, size })
+      .then((data) => {
+        console.log(data);
+        setServerData(data);
+        setFetching(false);
+      })
+      .catch((err) => exceptionHandle(err));
   }, [page, size, refresh]);
 
   return (
