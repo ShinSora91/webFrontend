@@ -20,8 +20,9 @@ const loginSlice = createSlice({
   reducers: {
     login: (state, action) => {
       console.log("login....");
-      const data = action.payload;
-      return { email: data.email };
+      const payload = action.payload; //{소셜로그인 회원이 사용}
+      setCookie("member", JSON.stringify(payload), 1); //1일
+      return { email: payload.email };
     },
     logout: (state, action) => {
       console.log("logout....");
@@ -29,6 +30,7 @@ const loginSlice = createSlice({
       return { ...initialState };
     },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(loginPostAsync.fulfilled, (state, action) => {

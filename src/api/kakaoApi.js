@@ -9,7 +9,7 @@ const access_token_url = `https://kauth.kakao.com/oauth/token`;
 export const getKakaoLoginLink = () => {
   const kakaoURL =
     `https://kauth.kakao.com/oauth/authorize` +
-    `?client_id=${rest_api_key}` +
+    `?client_id=${rest_api_key}` + //REST API 키 사용
     `&redirect_uri=${encodeURIComponent(redirect_uri)}` +
     `&response_type=code`;
   return kakaoURL;
