@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login, loginPostAsync } from "../../slices/loginSlice";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import useCustomLogin from "../../hooks/useCustomLogin";
+import KakaoLoginComponent from "./KakaoLoginComponent";
 
 const initState = {
   email: "",
@@ -9,27 +8,24 @@ const initState = {
 };
 const LoginComponent = () => {
   const [loginParam, setLoginParam] = useState({ ...initState });
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { doLogin, moveToPath } = useCustomLogin();
 
   const handleChange = (e) => {
-    loginParam[e.target.name] = e.target.value;
-
+    const { name, value } = e.target;
+    loginParam[name] = value;
     setLoginParam({ ...loginParam });
   };
 
   const handleClickLogin = (e) => {
-    // dispatch(login(loginParam)); //동기화된 호출
+    //dispatch(login(loginParam)); //동기화된 호출
     //비동기 호출
-    dispatch(loginPostAsync(loginParam))
-      .unwrap()
-      .then((data) => {
-        console.log("after unwrap...");
-        console.log(data);
-        if (data.error) alert("이메일과 암호를 확인하세요");
-        else alert("로그인 성공");
-        navigate({ pathname: "/" }, { replace: true }, { replace: true });
-      });
+    doLogin(loginParam).then((data) => {
+      console.log("after unwrap...");
+      console.log(data);
+      if (data.error) alert("이메일과 암호를 확인하세요");
+      else alert("로그인 성공");
+      moveToPath("/");
+    });
   };
   return (
     <div className="border-2 border-sky-200 mt-10 m-2 p-4">
@@ -74,6 +70,7 @@ const LoginComponent = () => {
           </div>
         </div>
       </div>
+      <KakaoLoginComponent />
     </div>
   );
 };
