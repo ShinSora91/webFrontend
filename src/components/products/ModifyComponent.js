@@ -22,11 +22,13 @@ const ModifyComponent = ({ pno }) => {
       setFetching(false);
     });
   }, [pno]);
+
   const closeModal = () => {
     if (result === "수정완료") moveToRead(pno);
     else if (result === "삭제완료") moveToList({ page: 1 });
     setResult(null);
   };
+
   const handleChangeProduct = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });

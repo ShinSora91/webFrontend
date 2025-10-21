@@ -5,7 +5,8 @@ export const setCookie = (name, value, days) => {
   const expires = new Date();
 
   expires.setUTCDate(expires.getUTCDate() + days); //보관기한
-  return cookies.set(name, value, { path: "/", expires: expires });
+  const StringValue = typeof value === "object" ? JSON.stringify(value) : value;
+  return cookies.set(name, StringValue, { path: "/", expires: expires });
 };
 
 export const getCookie = (name) => {
