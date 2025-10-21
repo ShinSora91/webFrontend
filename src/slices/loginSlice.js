@@ -8,10 +8,12 @@ const initialState = {
 const loadMemberCookie = () => {
   //쿠키에서 로그인 정보 로딩
   const memberInfo = getCookie("member"); //로그인시 저장된 정보를 가져온다
-  console.log(memberInfo);
+  console.log("memberInfo", memberInfo);
   //닉네임 처리
-  if (memberInfo && memberInfo.nickname)
+  if (memberInfo && memberInfo.nickname) {
+    console.log("loadMemberCookie : memberInfo", memberInfo);
     memberInfo.nickname = decodeURIComponent(memberInfo.nickname);
+  }
   return memberInfo;
 };
 const loginSlice = createSlice({
@@ -21,6 +23,8 @@ const loginSlice = createSlice({
     login: (state, action) => {
       console.log("login....");
       const payload = action.payload; //{소셜로그인 회원이 사용}
+      console.log("action", action);
+      console.log("payload", payload);
       setCookie("member", JSON.stringify(payload), 1); //1일
       return { email: payload.email };
     },

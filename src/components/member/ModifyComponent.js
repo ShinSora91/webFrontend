@@ -1,22 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { modifyMember } from "../../api/memberApi";
+import useCustomLogin from "../../hooks/useCustomLogin";
+import ResultModal from "../common/ResultModal";
 
 const initState = { email: "", pw: "", nickname: "" };
-const ModifyComponent = () => {
-  const [member, setMember] = useState(second);
-  const loginInfo = useSelector((state) => state.loginInfo);
 
+const ModifyComponent = () => {
+  const [member, setMember] = useState(initState);
+  const loginInfo = useSelector((state) => state.loginSlice);
+  const { moveToLogin } = useCustomLogin();
+  const [result, setResult] = useState();
+  console.log("loginInfo", loginInfo);
   useEffect(() => {
     setMember({ ...loginInfo, pw: "ABCD" });
   }, [loginInfo]);
 
   const handleChange = (e) => {
-    member[e.target.name] = e.target.value;
-    setMember({ ...member });
+    const { name, value } = e.target;
+    setMember((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleClickModify = () => {
+    modifyMember(member).then((result) => {
+      setResult("Modified");
+    });
+  };
+
+  const colseModal = () => {
+    setResult(null);
+    moveToLogin();
   };
 
   return (
     <div className="mt-6">
+      {result ? (
+        <ResultModal
+          title={"회원정보"}
+          content={"정보수정완료"}
+          callbackFn={colseModal}
+        ></ResultModal>
+      ) : (
+        <></>
+      )}
       <div className="flex justify-center">
         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
           <div className="w-1/5 p-6 text-right font-bold">Email</div>
@@ -48,8 +74,8 @@ const ModifyComponent = () => {
             className="w-4/5 p-6 rounded-r border border-solid border-neutral-300 shadow-md"
             name="nickname"
             type={"text"}
-            value={member.nickname}
-            onClick={handleChange}
+            value={member?.nickname ?? ""}
+            onChange={handleChange}
           ></input>
         </div>
       </div>
@@ -57,9 +83,10 @@ const ModifyComponent = () => {
         <div className="relative mb-4 flex w-full flex-wrap justify-end">
           <button
             type="button"
+            onClick={handleClickModify}
             className="rounded p-4 m-2 text-xl w-32 text-white bg-blue-500"
           >
-            Modify
+            수정
           </button>
         </div>
       </div>
