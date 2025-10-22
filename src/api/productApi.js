@@ -1,6 +1,7 @@
 import axios from "axios";
-import { API_SERVER_HOST } from "./todoApi";
+import { API_SERVER_HOST } from "./commonApi";
 import jwtAxios from "../utils/jwtUtil";
+
 const host = `${API_SERVER_HOST}/api/products`;
 
 export const getList = async (pageParam) => {

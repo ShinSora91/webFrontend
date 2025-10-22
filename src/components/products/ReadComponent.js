@@ -1,21 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { getOne } from "../../api/productApi";
-import FetchingModal from "../common/FetchingModal";
+import { API_SERVER_HOST } from "../../api/commonApi";
 import useCustomMove from "../../hooks/useCustomMove";
-import { API_SERVER_HOST } from "../../api/todoApi";
+import FetchingModal from "../common/FetchingModal";
+import useCustomCart from "../../hooks/useCustomCart";
+import useCustomLogin from "../../hooks/useCustomLogin";
 
 const initState = {
+  pno: 0,
   pname: "",
   pdesc: "",
   price: 0,
-  files: [],
   uploadFileNames: [],
 };
+
+const host = API_SERVER_HOST;
+
 const ReadComponent = ({ pno }) => {
   const [product, setProduct] = useState({ ...initState });
-  const [fetching, setFetching] = useState(false);
   const { moveToList, moveToModify } = useCustomMove();
-  const host = API_SERVER_HOST;
+  const [fetching, setFetching] = useState(false);
+  const { changeCart, cartItems } = useCustomCart();
+  const { loginState } = useCustomLogin();
 
   useEffect(() => {
     setFetching(true);
@@ -24,6 +30,21 @@ const ReadComponent = ({ pno }) => {
       setFetching(false);
     });
   }, [pno]);
+
+  const handleClickAddCart = () => {
+    let qty = 1;
+    const addedItem = cartItems.filter((item) => item.pno === parseInt(pno))[0];
+
+    if (addedItem) {
+      if (
+        window.confirm("이미 추가된 상품입니다. 추가하시겠습니까?") === false
+      ) {
+        return;
+      }
+      qty = addedItem.qty + 1;
+    }
+    changeCart({ emial: loginState.email, pno: pno, qty: qty });
+  };
 
   return (
     <div className="border-2 border-sky-200 mt-10 m-2 p-4">

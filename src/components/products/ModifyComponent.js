@@ -3,7 +3,7 @@ import { deleteProduct, getOne, putProduct } from "../../api/productApi";
 import FetchingModal from "../common/FetchingModal";
 import useCustomMove from "../../hooks/useCustomMove";
 import ResultModal from "../common/ResultModal";
-import { API_SERVER_HOST } from "../../api/todoApi";
+import { API_SERVER_HOST } from "../../api/commonApi";
 
 const initState = { pname: "", pdesc: "", price: 0, files: [] };
 
