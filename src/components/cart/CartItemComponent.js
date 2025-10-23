@@ -1,10 +1,20 @@
 import { API_SERVER_HOST } from "../../api/commonApi";
+import useCustomCart from "../../hooks/useCustomCart";
 
 const host = API_SERVER_HOST;
 
-const CartItemComponent = ({ cino, pname, price, pno, qty, imageFile }) => {
+const CartItemComponent = ({
+  cino,
+  pname,
+  price,
+  pno,
+  qty,
+  imageFile,
+  changeCart,
+  email,
+}) => {
   const handleClickQty = (amount) => {
-    changeCart({ emial, cino, pno, qty: qty + amount });
+    changeCart({ email, cino, pno, qty: qty + amount });
   };
   return (
     <li key={cino} className="border-2">
