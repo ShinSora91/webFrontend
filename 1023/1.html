@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [1, 2, 3, 4, 5];
+      let str = ["사랑", "믿음", "증오", "갈증", "보람"];
+
+      //함수를 만들어서 2개의 배열에서 각각의 데이터를 전달하고 첫번째 파라미터와 두번째 파라미터를 결합한 결과를 반환
+
+      //   const strCombination = (str, arr) => {
+      //     let strArr = "";
+      //     console.log(str);
+      //     console.log(arr);
+      //     for (let i = 0; i < arr.length; i++) {
+      //       strArr += str[i] + arr[i] + ", ";
+      //       console.log("테스트", strArr);
+      //     }
+
+      //     return strArr;
+      //   };
+
+      //   let arrStr = [];
+      //   arrStr.push(strCombination(str, arr));
+      //   console.log(arrStr);
+
+      //   const f = (str, arr) => {
+      //     let strSum = "";
+
+      //     strSum += str + arr;
+
+      //     return strSum;
+      //   };
+
+      //   let arrStr2 = [];
+      //   for (let i = 0; i < str.length; i++) {
+      //     arrStr2.push(f(str[i], arr[i]));
+      //   }
+      //   console.log("arrStr2", arrStr2);
+
+      //   let aa = str.map((s, idx) => s + (idx + 1));
+      //   console.log("aa", aa);
+
+      //------------------------------------------------
+
+      const merge = (i, j) => i + j;
+      const result = [];
+      for (let i = 0; i < arr.length; i++) {
+        result.push(merge(str[i], arr[i]));
+      }
+      console.log("result", result);
+      let u = result[0].substring(1);
+      var v = Number("3") + 7;
+      console.log("uv", u, v);
+
+      //문3) result에 들어있는 문자열을 마지막 수자와 마지막 문자열(숫자)까지 잘라서
+      //각각의 문자열을 결합하고 숫자는 더한 결과를 구해서 literal object에 저장
+      //{"결합":"사랑믿음증오갈증보물", "합계":15}
+
+      const s = (r) => {
+        let strSum = "";
+        let numSum = 0;
+        for (let i = 0; i < r.length; i++) {
+          let strSub = r[i].substring(0, 2);
+          let numSub = r[i].substring(2);
+
+          strSum += strSub;
+          numSum += Number(numSub);
+        }
+        let literalObject = {};
+        literalObject["결합"] = strSum;
+        literalObject["합계"] = numSum;
+        console.log(Object.keys(literalObject));
+
+        return literalObject;
+      };
+      let answer = s(result);
+      console.log("answer", answer);
+
+      const intSlice = (i) => Number(i.substring(i.length - 1));
+      const strSlice = (i) => i.substring(0, i.length - 1);
+      console.log(intSlice(result[0]));
+      console.log(strSlice(result[0]));
+      obj = { 결합: "", 합계: 0 };
+
+      for (let i of result) {
+        obj["결합"] += strSlice(i);
+        obj["합계"] += intSlice(i);
+      }
+      console.log("obj", obj);
+    </script>
+  </body>
+</html>

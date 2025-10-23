@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let list2 = [
+        {
+          a: [11, 23, 677, 188],
+          b: ["사랑1", "합니다3", "감사합니다1", "오만구미8"],
+        },
+        {
+          a: [121, 213, 167, 288],
+          b: ["사랑2", "합니다7", "감사합니다고2", "오만부산다3"],
+        },
+        {
+          a: [113, 231, 607, 388],
+          b: ["사랑3", "합니다바보8", "감사합니다귀8", "오만마징가다5"],
+        },
+        {
+          a: [181, 123, 607, 488],
+          b: ["사랑4", "합니다입니다3", "감사합니다합7", "오만태권브이다1"],
+        },
+      ];
+      // {"a_1":11+121+113+181, "a_2":23+213+231+123, "a_3":677+167+607+607, "a_4":188+288+388+488
+      // "b_1_결합":["사랑1","합니다3","감사합니다1","오만구미3"], 에서 문자열의 합"
+      // "b_1_합계":["사랑1","합니다3","감사합니다1","오만구미8"], 에서 숫자만 합"
+      // }
+      let a1 = 0,
+        a2 = 0,
+        a3 = 0,
+        a4 = 0;
+      for (let i = 0; i < list2.length; i++) {
+        a1 += list2[i].a[0];
+        a2 += list2[i].a[1];
+        a3 += list2[i].a[2];
+        a4 += list2[i].a[3];
+      }
+
+      let bS1 = "",
+        bS2 = "",
+        bS3 = "",
+        bS4 = "";
+      let b1 = 0,
+        b2 = 0,
+        b3 = 0,
+        b4 = 0;
+
+      for (let i = 0; i < list2.length; i++) {
+        bS1 += list2[0].b[i].substring(0, list2[0].b[i].length - 1);
+        b1 += Number(list2[0].b[i].substring(list2[0].b[i].length - 1));
+
+        bS2 += list2[1].b[i].substring(0, list2[1].b[i].length - 1);
+        b2 += Number(list2[1].b[i].substring(list2[1].b[i].length - 1));
+
+        bS3 += list2[2].b[i].substring(0, list2[2].b[i].length - 1);
+        b3 += Number(list2[2].b[i].substring(list2[2].b[i].length - 1));
+
+        bS4 += list2[3].b[i].substring(0, list2[3].b[i].length - 1);
+        b4 += Number(list2[3].b[i].substring(list2[3].b[i].length - 1));
+      }
+
+      let obj = {};
+      obj["a_1"] = a1;
+      obj["a_2"] = a2;
+      obj["a_3"] = a3;
+      obj["a_4"] = a4;
+
+      obj["b_1_결합"] = bS1;
+      obj["b_1_합계"] = b1;
+
+      obj["b_2_결합"] = bS2;
+      obj["b_2_합계"] = b2;
+
+      obj["b_3_결합"] = bS3;
+      obj["b_3_합계"] = b3;
+
+      obj["b_4_결합"] = bS4;
+      obj["b_4_합계"] = b4;
+      console.log(obj);
+      // let keyA = ["a_1", "a_2", "a_3", "a_4"];
+      // let keyB = ["b_1_결합", "b_2_결합", "b_3_결합", "b_4_결합"];
+      // let keyB2 = ["b_1_합계", "b_2_합계", "b_3_합계", "b_4_합계"];
+
+      // let obj = {
+      //   a_1: 0,
+      //   a_2: 0,
+      //   a_3: 0,
+      //   a_4: 0,
+      //   b_1_결합: "",
+      //   b_2_결합: "",
+      //   b_3_결합: "",
+      //   b_4_결합: "",
+      //   b_1_합계: "",
+      //   b_2_합계: "",
+      //   b_3_합계: "",
+      //   b_4_합계: "",
+      // };
+
+      // const intSlice = (i) => Number(i.substring(i.length - 1));
+      // const strSlice = (i) => i.substring(0, i.length - 1);
+
+      // for (let i = 0; i < 4; i++) {
+      //   for (let j = 0; j < 4; j++) {
+      //     obj[keyA[i]] += list2[j].a[i];
+      //     obj[keyB[i]] += strSlice(liet2[i].b[j]);
+      //     obj[keyB2[i]] += intSlice(list2[i].b[j]);
+      //   }
+      // }
+
+      // console.log(obj);
+    </script>
+  </body>
+</html>

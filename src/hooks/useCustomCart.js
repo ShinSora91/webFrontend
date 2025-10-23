@@ -6,7 +6,7 @@ const useCustomCart = () => {
   const cartItems = useSelector((state) => state.cartSlice);
   const dispatch = useDispatch();
   const refreshCart = () => dispatch(getCartItemsAsync());
-  const changeCart = (param) => dispatch(postChangeCartAsync());
+  const changeCart = (param) => dispatch(postChangeCartAsync(param));
   return { cartItems, refreshCart, changeCart };
 };
 

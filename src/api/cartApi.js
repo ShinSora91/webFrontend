@@ -1,7 +1,7 @@
 import { API_SERVER_HOST } from "./commonApi";
 import jwtAxios from "../utils/jwtUtil";
 
-const host = `${API_SERVER_HOST}/api/products`;
+const host = `${API_SERVER_HOST}/api/cart`;
 
 export const getCartItems = async () => {
   const res = await jwtAxios.get(`${host}/items`);

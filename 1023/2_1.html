@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let list2 = [
+        {
+          a: [11, 23, 677, 188],
+          b: ["사랑1", "합니다3", "감사합니다1", "오만구미8"],
+        },
+        {
+          a: [121, 213, 167, 288],
+          b: ["사랑2", "합니다7", "감사합니다고2", "오만부산다3"],
+        },
+        {
+          a: [113, 231, 607, 388],
+          b: ["사랑3", "합니다바보8", "감사합니다귀8", "오만마징가다5"],
+        },
+        {
+          a: [181, 123, 607, 488],
+          b: ["사랑4", "합니다입니다3", "감사합니다합7", "오만태권브이다1"],
+        },
+      ];
+
+      const intSlice = (i) => Number(i.substring(i.length - 1));
+      const strSlice = (i) => i.substring(0, i.length - 1);
+      const finalReturnB = (i, idx) => i[idx];
+      const resultTemp = {
+        a_0: 0,
+        a_1: 0,
+        a_2: 0,
+        a_3: 0,
+        b_0_결합: "",
+        b_0_합계: "",
+        b_1_결합: "",
+        b_1_합계: "",
+        b_2_결합: "",
+        b_2_합계: "",
+        b_3_결합: "",
+        b_3_합계: "",
+      };
+
+      const f = ({ a, b }, idx) => {
+        var u = intSlice(b[idx]);
+        var v = strSlice(b[idx]);
+        resultTemp["a_" + idx] += a[idx];
+        resultTemp["b_" + idx + "_결합"] += u;
+        resultTemp["b_" + idx + "_합계"] += v;
+      };
+
+      list2.map((i) => {
+        console.log(i);
+        i.a.map((_, idx) => {
+          f(i, idx);
+        });
+      });
+      console.log("resultmap", resultTemp);
+    </script>
+  </body>
+</html>

@@ -43,7 +43,7 @@ const ReadComponent = ({ pno }) => {
       }
       qty = addedItem.qty + 1;
     }
-    changeCart({ emial: loginState.email, pno: pno, qty: qty });
+    changeCart({ email: loginState.email, pno: pno, qty: qty });
   };
 
   return (
@@ -93,6 +93,13 @@ const ReadComponent = ({ pno }) => {
         ))}
       </div>
       <div className="flex justify-end p-4">
+        <button
+          type="button"
+          className="inline-block rounded p-4 m-2 text-xl w-32 text-white bg-green-500"
+          onClick={handleClickAddCart}
+        >
+          Add Cart
+        </button>
         <button
           type="button"
           className="inline-block rounded p-4 m-2 text-xl text-white bg-blue-500"

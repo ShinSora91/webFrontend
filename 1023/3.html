@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let u = [
+        [10, 20, 30],
+        [70, 80, 807],
+        [11, 12, 34],
+        [56, 78, 90],
+      ];
+      //1) {"a_1":60, "a_2":957 } //가로
+      //2) {"a_1":10+70+12+56, "a_2":20+80+12+78} //세로
+
+      let objWidth = { a_1: 0, a_2: 0, a_3: 0, a_4: 0 }; //가로
+      let objLength = { a_1: 0, a_2: 0, a_3: 0 }; //세로
+
+      for (let i = 0; i < 3; i++) {
+        objWidth.a_1 += u[0][i];
+        objWidth.a_2 += u[1][i];
+        objWidth.a_3 += u[2][i];
+        objWidth.a_4 += u[3][i];
+      }
+      for (let j = 0; j < 4; j++) {
+        objLength.a_1 += u[j][0];
+        objLength.a_2 += u[j][1];
+        objLength.a_3 += u[j][2];
+      }
+      console.log(objWidth);
+      console.log(objLength);
+    </script>
+  </body>
+</html>
