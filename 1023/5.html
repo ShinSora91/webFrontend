@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const u = (k) => {
+        return k(3);
+      };
+
+      console.log(u((i) => i * 5)); //u 안의 괄호를 채워서 15가 출력되도록 하세요
+
+      const z = ({ r, tt }) => {
+        const { q } = r;
+        console.log(q);
+        // console.log(tt);
+        let m = "";
+        for (let k of q) {
+          m += k.substring(2);
+          m += tt(m);
+        }
+        return m;
+      };
+      //위의 코드가 동작하도록 호출
+      const t = (i) => i + 3;
+      let obj = {
+        r: { q: ["불불불고기", "크크크러스트"] },
+        tt: t,
+      };
+      let test = z(obj);
+      console.log(test);
+    </script>
+  </body>
+</html>
